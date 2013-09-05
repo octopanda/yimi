@@ -3,7 +3,7 @@
 	<name>Yimi</name>
 	<description>Our First App</description>
 	<author href="http://github.com/octopanda" email="william_k_han@foxmail.com">HanKai GuoHaoming DengChanghong</author>
-	<icon src="images/yimi.ico" gap:role="default" />
+	<icon src="images/yimi.png" gap:role="default" />
 	<feature name="http://api.phonegap.com/1.0/geolocation"/>
 	<feature name="http://api.phonegap.com/1.0/network"/>
 	<preference name="orientation" value="portrait" />
