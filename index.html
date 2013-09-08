@@ -19,9 +19,20 @@
 			var url = "http://demo.alphatr.com/weather/info.php";
 			showDate();
 			var dynamicClock = setInterval("showDate()", 1000);
-			$.getJSON(url + "?get=weather&citycode=" + 101010200 + "&callback=?" , function (data) {
-				$("#weather").html("<p class=\"deg\">" + data.weatherinfo.temp1 + "</p><p class=\"forecast\">" + data.weatherinfo.weather1 + "</p>");
-			})
+			function getWeather(){
+				try {
+					$.getJSON(url + "?get=weather&citycode=" + 101010200 + "&callback=?" , function (data) {
+						$("#weather").html("<p class=\"deg\">" + data.weatherinfo.temp1 + "</p><p class=\"forecast\">" + data.weatherinfo.weather1 + "</p>");
+					})
+				} catch(ep) {
+
+				}
+			}
+			getWeather();
+			$(".section-2").click(function(){
+				$("#weather").text("正在加载天气...");
+				getWeather();
+			});		
 		});
 	</script>
 </head>
