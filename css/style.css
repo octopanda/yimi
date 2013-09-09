@@ -43,16 +43,16 @@ body { color:white; font-size:0px; font-weight:bold; }
 @media screen and (min-height:1080px) and (min-width:1280px) { body{font-size:20px;} }
 @media screen and (min-height:1200px) and (min-width:1280px) { body{font-size:22px;} }
 
+#weather{height:100%;font-family:"microsoft yahei", simsun, sans-serif;}
 .section-1{position:relative;height:33%;background:#39f;}
 .section-2{position:relative;height:34%;background:#fc0;}
 .section-3{position:relative;height:33%;background:#f06;}
-#clock, #weather, #lunar{position:absolute;top:15%;width:100%;height:70%;text-align:center;}
+#clock, #weath, #lunar{position:absolute;top:15%;width:100%;height:70%;text-align:center;}
 #clock .date{font-size:4.8em;height:60%;}
 #clock .time{font-size:3.4em;height:40%;}
 
-#weather .deg{font-size:3.9em;height:50%;}
-#weather .forecast{font-size:3.6em;height:50%;}
+#weath .deg{font-size:3.9em;height:50%;}
+#weath .forecast{font-size:3.6em;height:50%;}
 
 #lunar .date{font-size:3.65em;height:48%;}
 #lunar .year{font-size:3.95em;height:52%;}
-

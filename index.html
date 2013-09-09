@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="initial-scale=2.0,width=device-width" />
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-type" name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" />
+	<link rel="stylesheet" href="css/jquery.mobile.css" />
 	<link rel="stylesheet" href="css/style.css" />
-	<script src="phonegap.js"></script>
 	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile.js"></script>
 	<script>
+		window.location = "#weather";
 		function showDate(){
 			var date = new Date();
 			var strDate = date.getFullYear() + "." + (date.getUTCMonth() + 1) + "." + date.getDate();
@@ -22,7 +23,7 @@
 			function getWeather(){
 				try {
 					$.getJSON(url + "?get=weather&citycode=" + 101010200 + "&callback=?" , function (data) {
-						$("#weather").html("<p class=\"deg\">" + data.weatherinfo.temp1 + "</p><p class=\"forecast\">" + data.weatherinfo.weather1 + "</p>");
+						$("#weath").html("<p class=\"deg\">" + data.weatherinfo.temp1 + "</p><p class=\"forecast\">" + data.weatherinfo.weather1 + "</p>");
 					})
 				} catch(ep) {
 
@@ -30,26 +31,56 @@
 			}
 			getWeather();
 			$(".section-2").click(function(){
-				$("#weather").text("正在加载天气...");
+				$("#weath").text("正在加载天气...");
 				getWeather();
-			});		
-		});
+			});
+			$(document).on("swipeleft", "#account", function() {
+				$.mobile.changePage("#weather", {transition: "slide"});
+			});
+			$(document).on("swiperight", "#weather", function() {
+				$.mobile.changePage("#account", {transition: "slide", reverse: true});
+			});
+			$(document).on("swipeleft", "#weather", function() {
+				$.mobile.changePage("#order", {transition: "slide"});
+			});			
+			$(document).on("swiperight", "#order", function() {
+				$.mobile.changePage("#weather", {transition: "slide", reverse: true});
+			});
+		})
 	</script>
 </head>
 <body>
-<div class="section-1">
-	<div id="clock" class="clock">
+<div data-role="page" id="account">
+	<div data-role="header" data-theme="b">
+		<h1>左滑记账</h1>
+	</div>
+	<div data-role="content" id="account-content">
+		账本
 	</div>
 </div>
-<div class="section-2">
-	<div id="weather">
-		正在加载天气...
-	</div>
+<div data-role="page" id="weather">
+		<div class="section-1">
+			<div id="clock" class="clock">
+			</div>
+		</div>
+		<div class="section-2">
+			<div id="weath">
+				正在加载天气...
+			</div>
+		</div>
+		<div class="section-3">
+			<div id="lunar">
+				<p class="date">农历农历农历</p>
+				<p class="year">农历年&nbsp;&nbsp;节日</p>
+			</div>
+		</div>
 </div>
-<div class="section-3">
-	<div id="lunar">
-		<p class="date">农历农历农历</p>
-		<p class="year">农历年&nbsp;&nbsp;节日</p>
+<div data-role="page" id="order">
+	<div data-role="header" data-theme="b">
+		<h1>右滑订餐</h1>
+	</div>
+	<div data-role="content" id="order-content">
+		订餐
 	</div>
 </div>
 </body>
